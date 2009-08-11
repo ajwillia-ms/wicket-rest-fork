@@ -54,7 +54,6 @@ public class HibernatePersonDAO extends HibernateDao implements PersonDAO {
         getSession().update(person);
     }
 
-	@Override
 	public Person findPersonByEmail(String email) {
         Assert.hasText(email);
         String query = "from Person p where p.email = :email";

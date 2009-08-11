@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.innobuilt</groupId>
-  <artifactId>wicket-rest</artifactId>
+  <parent>
+			<groupId>org.innobuilt</groupId>
+			<artifactId>wicket-rest</artifactId>
+			<version>0.1</version>
+  </parent>
+  <artifactId>wicket-rest-api</artifactId>
   <packaging>jar</packaging>
   <version>0.1</version>
   <description></description>
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
@@ -68,9 +62,4 @@
 			<version>1.2.2</version>
 		</dependency>
 	</dependencies>
-	<properties>
-		<wicket.version>1.4-rc7</wicket.version>
-		<jetty.version>6.1.15</jetty.version>
-		<junit.version>3.8.2</junit.version>
-	</properties>
 </project>

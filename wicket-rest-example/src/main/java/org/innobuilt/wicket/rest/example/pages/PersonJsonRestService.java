@@ -29,9 +29,6 @@ public class PersonJsonRestService extends JsonWebServicePage {
 
 	@Override
 	public void doGet(PageParameters params) {
-		Long personId = (Long)params.getLong(ID_KEY);
-		String email = params.getString(EMAIL_KEY);
-		String username = params.getString(USERNAME_KEY);
 		Person person = null;
 		
 		//return all if no params
@@ -40,6 +37,9 @@ public class PersonJsonRestService extends JsonWebServicePage {
 			setDefaultModel(new Model(persons.toArray(new Person[0])));
 			return;
 		} 
+		Long personId = params.getAsLong(ID_KEY);
+		String email = params.getString(EMAIL_KEY);
+		String username = params.getString(USERNAME_KEY);
 		
 		if (personId != null) {
 			person = getPersonService().getPerson(personId);
