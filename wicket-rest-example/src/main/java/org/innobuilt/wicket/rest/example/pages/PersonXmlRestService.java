@@ -1,5 +1,6 @@
 package org.innobuilt.wicket.rest.example.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.wicket.PageParameters;
@@ -18,33 +19,23 @@ public class PersonXmlRestService extends XmlWebServicePage {
 	}
 
 	@Override
-	public void doDelete(PageParameters params) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void doGet(PageParameters params) {
-		if (params.isEmpty()) {
-			List<Person> persons = getPersonService().getAllPersons();
-			setDefaultModel(new Model(persons.toArray(new Person[0])));
-		} //TODO allow for id, email, username and name queries
-		//TODO make docs available through framework by visiting /mounted-path/docs
+		PersonRestServiceHelper.doGet(this, params);
 	}
 
 	@Override
 	public void doPost(PageParameters params) {
-		// TODO Auto-generated method stub
-
+		PersonRestServiceHelper.doPost(this, params);
 	}
 
 	@Override
 	public void doPut(PageParameters params) {
-		// TODO Auto-generated method stub
-
+		PersonRestServiceHelper.doPut(this, params);
 	}
 
-	private PersonService getPersonService() {
-		return WicketRestApplication.get().getPersonService();
+	@Override
+	public void doDelete(PageParameters params) {
+		PersonRestServiceHelper.doDelete(this, params);
 	}
+	
 }

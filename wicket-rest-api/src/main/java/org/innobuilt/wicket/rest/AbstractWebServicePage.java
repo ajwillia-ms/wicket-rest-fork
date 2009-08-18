@@ -16,6 +16,8 @@ import org.apache.wicket.protocol.http.WebRequest;
 
 public abstract class AbstractWebServicePage extends WebPage {
 
+	//TODO make docs available through framework by visiting /mounted-path/docs
+	//TODO Post this back to http://blog.brunoborges.com.br/2008/11/restful-web-services-with-wicket.html
 	private static Logger LOGGER = Logger.getLogger(AbstractWebServicePage.class);
 	public static final String POST = "POST";
 	public static final String PUT = "PUT";
@@ -81,12 +83,6 @@ public abstract class AbstractWebServicePage extends WebPage {
 
 	private String getRequestBody() {
 		HttpServletRequest request = ((WebRequest) getRequest()).getHttpServletRequest();
-		// inside service(ServletRequest req, ServletResponse res)
-		// of a class that implements Servlet
-		// or
-		// inside doPost(HttpServletRequest req, HttpServletResponse resp)
-		// of a class that implements HTTPServlet
-
 		StringBuilder stringBuilder = new StringBuilder();
 		BufferedReader bufferedReader = null;
 		try {

@@ -22,5 +22,6 @@ public class BootstrapDataPopulator implements InitializingBean {
 		personService.createPerson("jpiasci", "jesse@innobuilt.org", "Jesse Piascik");
 		personService.createPerson("jgarcia", "jerry.garcia@dead.net", "Jerry Garcia");
 		personService.createPerson("jcoltran", "john.coltrane@sax.com", "John Coltrane");
+		personService.createPerson("lpaul", "les.paul@guitar.com", "Les Paul");
     }
 }
