@@ -35,12 +35,20 @@ public abstract class AbstractWebServicePage extends WebPage {
 		LOGGER.debug("QueryString:\n---------\n"+((WebRequest) getRequest()).getHttpServletRequest().getQueryString());
 		String method = ((WebRequest) getRequest()).getHttpServletRequest().getMethod();
 		if (POST.equals(method)) {
-			setModelFromBody(getRequestBody());
+			try {
+				setModelFromBody(getRequestBody());
+			} catch(Exception e) {
+				//swallow this exception
+			}
 			doPost(getPageParameters());
 		} else if (GET.equals(method)) {
 			doGet(getPageParameters());
 		} else if (PUT.equals(method)) {
-			setModelFromBody(getRequestBody());
+			try {
+				setModelFromBody(getRequestBody());
+			} catch(Exception e) {
+				//swallow this exception
+			}
 			doPut(getPageParameters());
 		} else if (DELETE.equals(method)) {
 			doDelete(getPageParameters());
@@ -54,6 +62,7 @@ public abstract class AbstractWebServicePage extends WebPage {
 
 	/**
 	 * Use this method for lookups in the service implementation class
+	 * TODO This should not have to be implemented, it should return an error message by default.
 	 * @param params
 	 */
 	public abstract void doGet(PageParameters params);

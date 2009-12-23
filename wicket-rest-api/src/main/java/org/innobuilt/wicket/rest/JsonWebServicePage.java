@@ -15,6 +15,14 @@ public abstract class JsonWebServicePage extends AbstractWebServicePage {
 	private transient GsonBuilder builder;
 	private Class clazz;
 
+	public Class getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(Class clazz) {
+		this.clazz = clazz;
+	}
+
 	public JsonWebServicePage(PageParameters params) {
 		super(params);
 		builder = new GsonBuilder();
@@ -54,7 +62,7 @@ public abstract class JsonWebServicePage extends AbstractWebServicePage {
 	}
 
 	@Override
-	protected final void setModelFromBody(String body) {
+	protected void setModelFromBody(String body) {
 		Gson gson = builder.create();
 		setDefaultModel(new Model((Serializable)gson.fromJson(body, clazz)));
 	}

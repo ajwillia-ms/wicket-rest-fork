@@ -5,8 +5,10 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.target.coding.QueryStringUrlCodingStrategy;
 import org.innobuilt.wicket.rest.example.pages.HomePage;
 import org.innobuilt.wicket.rest.example.pages.PersonJsonRestService;
+import org.innobuilt.wicket.rest.example.pages.PersonRPCServicePage;
 import org.innobuilt.wicket.rest.example.pages.PersonXmlRestService;
 import org.innobuilt.wicket.rest.example.service.PersonService;
+import org.innobuilt.wicket.rest.jsonrpc.JsonRPCServicePage;
 
 public class WicketRestApplication extends WebApplication {
 
@@ -18,6 +20,7 @@ public class WicketRestApplication extends WebApplication {
 		//TODO make these auto mount with annotation
 		mount(new QueryStringUrlCodingStrategy("/person-api/json",PersonJsonRestService.class));
 		mount(new QueryStringUrlCodingStrategy("/person-api/xml",PersonXmlRestService.class));
+		mount(new QueryStringUrlCodingStrategy("/person-api/rpc",PersonRPCServicePage.class));
 	}
 
 	@Override
