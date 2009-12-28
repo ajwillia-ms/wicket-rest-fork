@@ -3,15 +3,34 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.innobuilt</groupId>
 	<artifactId>wicket-rest</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<packaging>pom</packaging>
+	<name>wicket-rest</name>
 	<description>
 		A simple RESTful api for the Wicket framework
 	</description>
+	<url>http://code.google.com/p/wicket-rest/</url>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+	<scm>
+		<url>http://code.google.com/p/wicket-rest/source/browse/</url>
+	</scm>
 	<modules>
 		<module>wicket-rest-api</module>
 		<module>wicket-rest-example</module>
 	</modules>
+	<distributionManagement>
+		<repository>
+			<id>innobuilt-repository</id>
+			<url>scp://innobuilt.org/var/www/vhosts/default/htdocs/maven2/releases</url>
+		</repository>
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -24,7 +43,7 @@
 		</plugins>
 	</build>
 	<properties>
-		<wicket.version>1.4-rc7</wicket.version>
+		<wicket.version>1.4.5</wicket.version>
 		<jetty.version>6.1.15</jetty.version>
 		<junit.version>3.8.2</junit.version>
 		<spring.version>2.5.6</spring.version>
