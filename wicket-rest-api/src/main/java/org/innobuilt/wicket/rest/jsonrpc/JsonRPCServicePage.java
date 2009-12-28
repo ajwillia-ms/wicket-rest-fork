@@ -1,6 +1,7 @@
 package org.innobuilt.wicket.rest.jsonrpc;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,8 @@ public class JsonRPCServicePage extends JsonWebServicePage {
 	private static final Integer NULL_ID_CODE = 5;
 	private static final String PARSE_ERROR = "Error parsing RPC request";
 	private static final Integer PARSE_ERROR_CODE = 6;
+	private static final String METHOD_EXCEPTION = "The remote method threw an exception: ";
+	private static final Integer METHOD_EXCEPTION_CODE = 7;
 	private List<Method> methods = new ArrayList<Method>();
 
 	public JsonRPCServicePage(PageParameters params) {
@@ -163,18 +166,24 @@ public class JsonRPCServicePage extends JsonWebServicePage {
 		Method method = request.getMethodObject();
 
 		// Run the method
-		try {
 			//create a response object and put the result object in it
-			Response response = new Response();
-			Serializable result = (Serializable)method.invoke(this, request.getParams());
-			response.setResult(result);
-			response.setId(request.getId());
-			response.setJsonrpc(VERSION);
-			setDefaultModel(new Model(response));
-		} catch (Exception e) {
-			e.printStackTrace();
-			errorResponse(new Error(UNSUPPORTED_METHOD_CODE, UNSUPPORTED_METHOD + e.getMessage()));
-		}
+			try {
+				Response response = new Response();
+				Serializable result = (Serializable)method.invoke(this, request.getParams());
+				response.setResult(result);
+				response.setId(request.getId());
+				response.setJsonrpc(VERSION);
+				setDefaultModel(new Model(response));
+			} catch (IllegalArgumentException e) {
+				errorResponse(new Error(UNSUPPORTED_METHOD_CODE, UNSUPPORTED_METHOD + e.getMessage()));
+			} catch (IllegalAccessException e) {
+				errorResponse(new Error(UNSUPPORTED_METHOD_CODE, UNSUPPORTED_METHOD + e.getMessage()));
+			} catch (InvocationTargetException e) {
+				errorResponse(new Error(UNSUPPORTED_METHOD_CODE, UNSUPPORTED_METHOD + e.getMessage()));
+			} catch (Exception e) {
+				errorResponse(new Error(METHOD_EXCEPTION_CODE, METHOD_EXCEPTION + e.getMessage()));
+			}
+ 
 
 	}
 
