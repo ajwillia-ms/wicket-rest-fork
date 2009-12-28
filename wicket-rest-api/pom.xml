@@ -4,7 +4,7 @@
   <parent>
 			<groupId>org.innobuilt</groupId>
 			<artifactId>wicket-rest</artifactId>
-			<version>0.2</version>
+			<version>0.3</version>
   </parent>
   <artifactId>wicket-rest-api</artifactId>
   <packaging>jar</packaging>
