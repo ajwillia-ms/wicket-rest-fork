@@ -36,7 +36,7 @@ public class JsonRPCServicePage extends JsonWebServicePage {
 	private static final Integer PARSE_ERROR_CODE = 6;
 	private static final String METHOD_EXCEPTION = "The remote method threw an exception: ";
 	private static final Integer METHOD_EXCEPTION_CODE = 7;
-	private List<Method> methods = new ArrayList<Method>();
+	private transient List<Method> methods = new ArrayList<Method>();
 
 	public JsonRPCServicePage(PageParameters params) {
 		super(params);
