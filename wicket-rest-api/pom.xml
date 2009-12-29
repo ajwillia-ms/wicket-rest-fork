@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-			<groupId>org.innobuilt</groupId>
-			<artifactId>wicket-rest</artifactId>
-			<version>0.3</version>
-  </parent>
-  <artifactId>wicket-rest-api</artifactId>
-  <packaging>jar</packaging>
-  <description></description>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.innobuilt</groupId>
+		<artifactId>wicket-rest</artifactId>
+		<version>0.3</version>
+	</parent>
+	<artifactId>wicket-rest-api</artifactId>
+	<packaging>jar</packaging>
+	<name>wicket-rest-api</name>
+	<description>
+		A simple RESTful api for the Wicket framework allowing for easy implementation of JSON, XML or JSON-RPC RESTful services. 
+	</description>
+	<url>http://code.google.com/p/wicket-rest/</url>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+	<scm>
+		<url>http://code.google.com/p/wicket-rest/source/browse/</url>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
