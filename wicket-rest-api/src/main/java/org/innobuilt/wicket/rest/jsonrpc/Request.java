@@ -2,12 +2,17 @@ package org.innobuilt.wicket.rest.jsonrpc;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import com.google.gson.annotations.Expose;
 
 public class Request implements Serializable{
 	private static final long serialVersionUID = 1;
+	@Expose
 	private String method;
+	@Expose
 	private String id;
+	@Expose
 	private Object[] params;
+	@Expose
 	private String jsonrpc;
 	private Error error;
 	private Method methodObject;

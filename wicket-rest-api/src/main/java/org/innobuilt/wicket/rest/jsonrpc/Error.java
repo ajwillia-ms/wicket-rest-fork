@@ -1,6 +1,7 @@
 package org.innobuilt.wicket.rest.jsonrpc;
 
 import java.io.Serializable;
+import com.google.gson.annotations.Expose;
 
 public class Error implements Serializable{
 	public Error(Integer code, String message) {
@@ -8,8 +9,11 @@ public class Error implements Serializable{
 		this.code = code;
 		this.message = message;
 	}
+	@Expose
 	private Integer code;
+	@Expose
 	private String message;
+	@Expose
 	private Object data;
 
 	public void setData(Object data) {

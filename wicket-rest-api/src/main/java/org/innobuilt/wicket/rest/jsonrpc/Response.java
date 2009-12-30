@@ -1,12 +1,18 @@
 package org.innobuilt.wicket.rest.jsonrpc;
 
 import java.io.Serializable;
+import com.google.gson.annotations.Expose;
 
 public class Response implements Serializable{
+	@Expose
 	private Object result;
+	@Expose
 	private String id;
+	@Expose
 	private String jsonrpc;
+	@Expose
 	private org.innobuilt.wicket.rest.jsonrpc.Error error;
+	
 	public void setJsonrpc(String jsonrpc) {
 		this.jsonrpc = jsonrpc;
 	}
