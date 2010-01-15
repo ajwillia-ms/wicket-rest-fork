@@ -69,11 +69,7 @@ public class JsonRPCServicePage extends JsonWebServicePage {
 			request.setError(new Error(NULL_ID_CODE, NULL_ID));
 			return;
 		}
-		// If version is no good throw error
-		if (request.getJsonrpc() == null || !request.getJsonrpc().equals(VERSION)) {
-			request.setError(new Error(UNSUPPORTED_VERSION_CODE, UNSUPPORTED_VERSION + request.getJsonrpc()));
-			return;
-		}
+
 		// If no method throw error
 		if (request.getMethod() == null) {
 			request.setError(new Error(UNSUPPORTED_METHOD_CODE, UNSUPPORTED_METHOD + null));
