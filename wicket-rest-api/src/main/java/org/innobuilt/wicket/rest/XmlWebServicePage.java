@@ -21,23 +21,27 @@ public abstract class XmlWebServicePage extends AbstractWebServicePage {
 	}
 
 	protected final void onRender(MarkupStream markupStream) {
-	  PrintWriter pw = new PrintWriter(getResponse().getOutputStream());
-	  pw.write(getXML().toString());
-	  pw.close();
-	 }
+		if (!isAuthorized()) {
+			return;
+		}
 
-	 protected XStream getXStream() {
-	  return xstream;
-	 }
+		PrintWriter pw = new PrintWriter(getResponse().getOutputStream());
+		pw.write(getXML().toString());
+		pw.close();
+	}
 
-	 private CharSequence getXML() {
-	  return xstream.toXML(getDefaultModelObject());
-	 }
+	protected XStream getXStream() {
+		return xstream;
+	}
 
-	 @Override
-	 public final String getMarkupType() {
-	  return "text/xml";
-	 }
+	private CharSequence getXML() {
+		return xstream.toXML(getDefaultModelObject());
+	}
+
+	@Override
+	public final String getMarkupType() {
+		return "text/xml";
+	}
 
 	@Override
 	protected final void setModelFromBody(String body) {

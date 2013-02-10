@@ -42,6 +42,10 @@ public abstract class JsonWebServicePage extends AbstractWebServicePage {
 	}
 	
 	protected final void onRender(MarkupStream markupStream) {
+		if (!isAuthorized()) {
+			return;
+		}
+
 		PrintWriter pw = new PrintWriter(getResponse().getOutputStream());
 		pw.write(getJson());
 		pw.close();

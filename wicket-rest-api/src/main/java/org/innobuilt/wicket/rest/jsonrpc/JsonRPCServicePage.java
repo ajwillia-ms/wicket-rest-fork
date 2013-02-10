@@ -131,6 +131,11 @@ public class JsonRPCServicePage extends JsonWebServicePage {
 	}
 
 	@Override
+	public boolean isRequestAuthorized() {
+		return true;
+	}
+
+	@Override
 	public void doDelete(PageParameters params) {
 		errorResponse(getUnsupportedMethodError(DELETE));
 	}

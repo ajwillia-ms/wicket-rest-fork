@@ -24,14 +24,30 @@ public abstract class AbstractWebServicePage extends WebPage {
 	public static final String GET = "GET";
 	public static final String DELETE = "DELETE";
 
+	private boolean authorized;
+
 	public AbstractWebServicePage(PageParameters params) {
 		super(params);
 		setStatelessHint(true);
 	}
 
+	boolean isAuthorized() {
+		return authorized;
+	}
+
+	public boolean isRequestAuthorized() {
+		return true;
+	}
+
 	@Override
 	protected void onBeforeRender() {
 		super.onBeforeRender();
+
+        authorized = isRequestAuthorized();
+		if (!authorized) {
+			return;
+		}
+
 		LOGGER.debug("QueryString:\n---------\n"+((WebRequest) getRequest()).getHttpServletRequest().getQueryString());
 		String method = ((WebRequest) getRequest()).getHttpServletRequest().getMethod();
 		if (POST.equals(method)) {
