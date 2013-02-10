@@ -2,9 +2,9 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.innobuilt</groupId>
+		<groupId>ms.ajwillia</groupId>
 		<artifactId>wicket-rest</artifactId>
-		<version>0.3</version>
+		<version>0.4</version>
 	</parent>
 	<artifactId>wicket-rest-api</artifactId>
 	<packaging>jar</packaging>
