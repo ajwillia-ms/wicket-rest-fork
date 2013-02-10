@@ -25,12 +25,12 @@
 		<module>wicket-rest-api</module>
 		<module>wicket-rest-example</module>
 	</modules>
-	<distributionManagement>
-		<repository>
-			<id>innobuilt-repository</id>
-			<url>scp://innobuilt.org/var/www/vhosts/default/htdocs/maven2/releases</url>
-		</repository>
-	</distributionManagement>
+  <distributionManagement>
+    <repository>
+      <id>headsupdev-external</id>
+      <url>dav:http://headsupdev.org/repository/external</url>
+    </repository>
+  </distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -41,6 +41,14 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
 	</build>
 	<properties>
 		<wicket.version>1.4.5</wicket.version>
