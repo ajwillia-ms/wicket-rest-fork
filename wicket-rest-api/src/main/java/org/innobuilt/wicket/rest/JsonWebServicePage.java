@@ -44,6 +44,7 @@ public abstract class JsonWebServicePage extends AbstractWebServicePage {
 		if (!isAuthorized()) {
 			return;
 		}
+		getResponse().setContentType( "application/json; charset=UTF-8" );
 
 		Writer pw = null;
 		try {
