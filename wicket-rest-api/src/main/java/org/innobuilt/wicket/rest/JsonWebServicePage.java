@@ -1,7 +1,6 @@
 package org.innobuilt.wicket.rest;
 
-import java.io.PrintWriter;
-import java.io.Serializable;
+import java.io.*;
 
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.MarkupStream;
@@ -46,9 +45,23 @@ public abstract class JsonWebServicePage extends AbstractWebServicePage {
 			return;
 		}
 
-		PrintWriter pw = new PrintWriter(getResponse().getOutputStream());
-		pw.write(getJson());
-		pw.close();
+		Writer pw = null;
+		try {
+			pw = new OutputStreamWriter(getResponse().getOutputStream(), "UTF-8");
+			pw.write(getJson());
+		} catch ( UnsupportedEncodingException e ) {
+			// nope - UTF-8 always included
+		} catch (IOException e) {
+			// probably just closing
+		} finally {
+			if (pw != null) {
+				try {
+					pw.close();
+				} catch ( IOException e ) {
+					// ignore
+				}
+			}
+		}
 	}
 
 	private String getJson() {
